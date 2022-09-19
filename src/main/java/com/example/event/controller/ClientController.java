@@ -17,7 +17,6 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ClientController {
     private final UserService userService;
-
     @GetMapping
     public ResponseEntity<?> getAll() {
         ApiResponse<List<User>> response = userService.getAll();
