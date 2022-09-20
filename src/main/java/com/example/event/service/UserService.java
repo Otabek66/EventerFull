@@ -48,4 +48,14 @@ public class UserService {
                 success(false).
                 build();
     }
+
+    public ApiResponse<User> add(User user) {
+        User save = userRepository.save(user);
+        return ApiResponse.<User>builder().
+                message("User is registered").
+                status(201).
+                success(true).
+                data(save).
+                build();
+    }
 }
