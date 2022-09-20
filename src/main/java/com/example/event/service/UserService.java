@@ -1,6 +1,7 @@
 package com.example.event.service;
 
 import com.example.event.dto.ApiResponse;
+import com.example.event.dto.UserDTO;
 import com.example.event.model.User;
 import com.example.event.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -57,5 +58,35 @@ public class UserService {
                 success(true).
                 data(save).
                 build();
+    }
+
+    public ApiResponse<?> edit(Long id, UserDTO dto) {
+        Optional<User> userOptional = userRepository.findById(id);
+        if (userOptional.isEmpty()) {
+            return ApiResponse
+                    .builder()
+                    .message("User not found")
+                    .success(false)
+                    .build();
+        }
+
+
+        User user = userOptional.get();
+        user.setFullName(dto.getFullName());
+        user.setEmail(dto.getEmail());
+        user.setFieldActivity(dto.getFieldActivity());
+
+        userRepository.save(user);
+
+        return ApiResponse
+                .builder()
+                .message("Saved")
+                .success(true)
+                .build();
+    }
+
+
+    public ApiResponse<User> delete(User user){
+
     }
 }
