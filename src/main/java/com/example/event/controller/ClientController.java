@@ -23,6 +23,9 @@ public class ClientController {
         ApiResponse<List<User>> response = userService.getAll();
         return ResponseEntity.status(response.getStatus()).body(response);
     }
+
+
+
     @GetMapping("/{id}")
     public ResponseEntity<?> getOne(@PathVariable Long id){
         ApiResponse<User> response = userService.getOne(id);
