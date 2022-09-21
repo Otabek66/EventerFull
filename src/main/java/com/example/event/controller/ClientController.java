@@ -18,6 +18,10 @@ public class ClientController {
     public ResponseEntity<?> getAll() {
         ApiResponse<List<User>> response = userService.getAll();
         return ResponseEntity.status(response.getStatus()).body(response);
+
+
+
+
     }
 
 
