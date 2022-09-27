@@ -17,9 +17,9 @@ public class EventController {
 
     private final EventService eventService;
 
-    @GetMapping
-    public ResponseEntity<?> getAll(){
-        ApiResponse<List<>>
-    }
+//    @GetMapping
+//    public ResponseEntity<?> getAll(){
+//        ApiResponse<List<>>
+//    }
 
 }
