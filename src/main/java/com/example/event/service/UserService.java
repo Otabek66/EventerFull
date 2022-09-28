@@ -3,7 +3,7 @@ package com.example.event.service;
 import com.example.event.dto.ApiResponse;
 import com.example.event.dto.UserDTO;
 import com.example.event.model.User;
-import com.example.event.repository.UserRepository;
+import com.example.event.repository.UsersRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -14,7 +14,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class UserService {
 
-    private final UserRepository userRepository;
+    private final UsersRepository userRepository;
 
     public ApiResponse<List<User>> getAll() {
         List<User> users = userRepository.findAll();

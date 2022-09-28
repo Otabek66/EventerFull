@@ -3,7 +3,6 @@ package com.example.event.controller;
 import com.example.event.dto.ApiResponse;
 import com.example.event.dto.UserDTO;
 import com.example.event.model.User;
-import com.example.event.repository.UserRepository;
 import com.example.event.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -17,7 +16,6 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class UserController {
     private final UserService userService;
-    private final UserRepository userRepository;
 
     @GetMapping
     public ResponseEntity<?> getAll() {
@@ -37,14 +35,14 @@ public class UserController {
         return ResponseEntity.status(response.getStatus()).body(response);
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<?> delete(@PathVariable Long id) {
-        Optional<User> userOptional = userRepository.findById(id);
-        if (userOptional.isEmpty())
-            return ResponseEntity.status(404).body("User not found");
-        userRepository.deleteById(id);
-        return ResponseEntity.ok().body("User deleted");
-    }
+//    @DeleteMapping("/{id}")
+//    public ResponseEntity<?> delete(@PathVariable Long id) {
+//        Optional<User> userOptional = userRepository.findById(id);
+//        if (userOptional.isEmpty())
+//            return ResponseEntity.status(404).body("User not found");
+//        userRepository.deleteById(id);
+//        return ResponseEntity.ok().body("User deleted");
+//    }
 
     @PutMapping("/{id}")
     public ResponseEntity<?> edit(@PathVariable Long id, @RequestBody UserDTO dto) {
